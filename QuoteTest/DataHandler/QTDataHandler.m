@@ -146,24 +146,18 @@ static QTDataHandler *sharedSingleton = nil;
     if ([self.dataBase open]) {
         
         NSInteger recentAuthorId = [self getAuthorIDForName:quote.author.name];
+        [self.dataBase beginTransaction];
         
         if (recentAuthorId == 0) {
-            [self.dataBase beginTransaction];
             [self.dataBase executeUpdate: [NSString stringWithFormat:@"INSERT INTO author (name) VALUES ('%@')", quote.author.name]];
-            [self.dataBase commit];
-
-            [self.dataBase beginTransaction];
             recentAuthorId = [self getAuthorIDForName:quote.author.name];
             [self.dataBase executeUpdate: [NSString stringWithFormat:@"INSERT INTO quote (quote_text,author_id) VALUES ('%@', %d)", quote.quoteText, recentAuthorId]];
-
-            [self.dataBase commit];
-            
         } else {
             
-            [self.dataBase beginTransaction];
             [self.dataBase executeUpdate: [NSString stringWithFormat:@"INSERT INTO quote (quote_text,author_id) VALUES ('%@', %d)", quote.quoteText, recentAuthorId]];
-            [self.dataBase commit];
         }
+        
+        [self.dataBase commit];
         
         [self.dataBase close];
 
@@ -189,17 +183,15 @@ static QTDataHandler *sharedSingleton = nil;
 {
     if ([self.dataBase open]) {
         
-            [self.dataBase beginTransaction];
-            [self.dataBase executeUpdate: [NSString stringWithFormat:@"DELETE FROM quote WHERE id = %d", quote.quoteId]];
-            [self.dataBase commit];
+        [self.dataBase beginTransaction];
+        [self.dataBase executeUpdate: [NSString stringWithFormat:@"DELETE FROM quote WHERE id = %d", quote.quoteId]];
         
         if ([self numberOfQuotesForAuthor: quote.author] == 0) {
-            [self.dataBase beginTransaction];
             [self.dataBase executeUpdate: [NSString stringWithFormat:@"DELETE FROM author WHERE id = %d", quote.author.authorId]];
-            [self.dataBase commit];
-
         }
         
+        [self.dataBase commit];
+
         [self.dataBase close];
         
     }
