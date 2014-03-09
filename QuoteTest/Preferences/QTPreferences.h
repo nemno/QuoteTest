@@ -15,6 +15,6 @@
 #define kStatusBarHeight (([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) ? 0.0f : 20.0f)
 
 
-//NOTIFICAN NAMES
+//NOTIFICATION NAMES
 
 #define kQouteAddedNotification @"quoteAddedNotification"

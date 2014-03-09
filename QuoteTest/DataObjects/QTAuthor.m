@@ -18,4 +18,33 @@
     [super dealloc];
 }
 
+- (NSArray *)keyPaths
+{
+    NSArray *result = [NSArray arrayWithObjects:
+                       @"authorId",
+                       @"name",
+                       nil];
+    
+    return result;
+}
+
+- (NSString *)descriptionForKeyPaths
+{
+    NSMutableString *desc = [NSMutableString string];
+    [desc appendString:@"\n\n"];
+    [desc appendFormat:@"Class name: %@\n", NSStringFromClass([self class])];
+    
+    NSArray *keyPathsArray = [self keyPaths];
+    for (NSString *keyPath in keyPathsArray) {
+        [desc appendFormat: @"%@: %@\n", keyPath, [self valueForKey:keyPath]];
+    }
+    
+    return [NSString stringWithString:desc];
+}
+
+-(NSString *)description
+{
+    return [self descriptionForKeyPaths];
+}
+
 @end

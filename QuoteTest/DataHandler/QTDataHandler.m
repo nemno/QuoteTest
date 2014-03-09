@@ -35,12 +35,6 @@ static QTDataHandler *sharedSingleton = nil;
     return self;
 }
 
-- (void)dealloc
-{
-    [sharedSingleton release];
-    [super dealloc];
-}
-
 - (FMDatabase *)createDataBase
 {
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -111,7 +105,7 @@ static QTDataHandler *sharedSingleton = nil;
 {
     QTAuthor *author = nil;
 
-    FMResultSet *set = [self.dataBase executeQuery:[NSString stringWithFormat: @"SELECT * FROM author WHERE id = %d", authorId]];
+    FMResultSet *set = [self.dataBase executeQuery:[NSString stringWithFormat: @"SELECT * FROM author WHERE id = %ld", (long)authorId]];
     
     if ([set next]) {
         author = [[[QTAuthor alloc] init] autorelease];
@@ -151,10 +145,10 @@ static QTDataHandler *sharedSingleton = nil;
         if (recentAuthorId == 0) {
             [self.dataBase executeUpdate: [NSString stringWithFormat:@"INSERT INTO author (name) VALUES ('%@')", quote.author.name]];
             recentAuthorId = [self getAuthorIDForName:quote.author.name];
-            [self.dataBase executeUpdate: [NSString stringWithFormat:@"INSERT INTO quote (quote_text,author_id) VALUES ('%@', %d)", quote.quoteText, recentAuthorId]];
+            [self.dataBase executeUpdate: [NSString stringWithFormat:@"INSERT INTO quote (quote_text,author_id) VALUES ('%@', %ld)", quote.quoteText, (long)recentAuthorId]];
         } else {
             
-            [self.dataBase executeUpdate: [NSString stringWithFormat:@"INSERT INTO quote (quote_text,author_id) VALUES ('%@', %d)", quote.quoteText, recentAuthorId]];
+            [self.dataBase executeUpdate: [NSString stringWithFormat:@"INSERT INTO quote (quote_text,author_id) VALUES ('%@', %ld)", quote.quoteText, (long)recentAuthorId]];
         }
         
         [self.dataBase commit];
@@ -184,10 +178,10 @@ static QTDataHandler *sharedSingleton = nil;
     if ([self.dataBase open]) {
         
         [self.dataBase beginTransaction];
-        [self.dataBase executeUpdate: [NSString stringWithFormat:@"DELETE FROM quote WHERE id = %d", quote.quoteId]];
+        [self.dataBase executeUpdate: [NSString stringWithFormat:@"DELETE FROM quote WHERE id = %ld", (long)quote.quoteId]];
         
         if ([self numberOfQuotesForAuthor: quote.author] == 0) {
-            [self.dataBase executeUpdate: [NSString stringWithFormat:@"DELETE FROM author WHERE id = %d", quote.author.authorId]];
+            [self.dataBase executeUpdate: [NSString stringWithFormat:@"DELETE FROM author WHERE id = %ld", (long)quote.author.authorId]];
         }
         
         [self.dataBase commit];
@@ -199,7 +193,7 @@ static QTDataHandler *sharedSingleton = nil;
 
 -(NSInteger)numberOfQuotesForAuthor: (QTAuthor*) author
 {
-    FMResultSet *set = [self.dataBase executeQuery:[NSString stringWithFormat: @"SELECT * FROM quote WHERE author_id = %d", author.authorId]];
+    FMResultSet *set = [self.dataBase executeQuery:[NSString stringWithFormat: @"SELECT * FROM quote WHERE author_id = %ld", (long)author.authorId]];
     
     if ([set next]) {
         

@@ -17,7 +17,7 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
     QTQutoteListViewController *quoteListViewControler = [[[QTQutoteListViewController alloc] init] autorelease];
-    UINavigationController *rootNavigationController = [[UINavigationController alloc] initWithRootViewController:quoteListViewControler];
+    UINavigationController *rootNavigationController = [[[UINavigationController alloc] initWithRootViewController:quoteListViewControler] autorelease];
     
     self.window.rootViewController = rootNavigationController;
     [self.window makeKeyAndVisible];

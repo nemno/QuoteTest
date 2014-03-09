@@ -31,6 +31,7 @@
     [authorNameTextField release];
     [quoteTextView release];
     [authorPlaceholderLabel release];
+    [quotePlaceholderLabel release];
     [super dealloc];
 }
 
