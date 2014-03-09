@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A02B27A18CCC87900D27064 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A02B27918CCC87900D27064 /* Icon@2x.png */; };
+		5A02B27C18CCDD7100D27064 /* quotes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5A02B27B18CCDD7100D27064 /* quotes.sqlite */; };
 		5A09788818CB44B300975FD8 /* QTAddQuoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A09788718CB44B300975FD8 /* QTAddQuoteViewController.m */; };
 		5A6D21D018CB653000C3E303 /* QTQuoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D21CF18CB653000C3E303 /* QTQuoteDetailViewController.m */; };
 		5A6D21ED18CB65A500C3E303 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D21E418CB65A500C3E303 /* FMDatabase.m */; };
@@ -34,7 +35,6 @@
 		5ACE98AA18CA110D00F9CE83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5ACE98A818CA110D00F9CE83 /* InfoPlist.strings */; };
 		5ACE98AC18CA110D00F9CE83 /* QuoteTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACE98AB18CA110D00F9CE83 /* QuoteTestTests.m */; };
 		5ACE98D418CA244100F9CE83 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ACE98D318CA244100F9CE83 /* libsqlite3.dylib */; };
-		5AF8E0C918CA3244005D6ED1 /* quotes.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 5ACE98D818CA2B1B00F9CE83 /* quotes.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		5A02B27918CCC87900D27064 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		5A02B27B18CCDD7100D27064 /* quotes.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = quotes.sqlite; sourceTree = "<group>"; };
 		5A09788618CB44B300975FD8 /* QTAddQuoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTAddQuoteViewController.h; sourceTree = "<group>"; };
 		5A09788718CB44B300975FD8 /* QTAddQuoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTAddQuoteViewController.m; sourceTree = "<group>"; };
 		5A6D21CE18CB653000C3E303 /* QTQuoteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTQuoteDetailViewController.h; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		5ACE98A918CA110D00F9CE83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5ACE98AB18CA110D00F9CE83 /* QuoteTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuoteTestTests.m; sourceTree = "<group>"; };
 		5ACE98D318CA244100F9CE83 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		5ACE98D818CA2B1B00F9CE83 /* quotes.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = quotes.sqlite; path = ../../../quotes.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +178,7 @@
 		5ABF985E18CA65FC001D4F1E /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				5ACE98D818CA2B1B00F9CE83 /* quotes.sqlite */,
+				5A02B27B18CCDD7100D27064 /* quotes.sqlite */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -378,9 +378,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AF8E0C918CA3244005D6ED1 /* quotes.sqlite in Resources */,
 				5A02B27A18CCC87900D27064 /* Icon@2x.png in Resources */,
 				5ACE989918CA110D00F9CE83 /* Images.xcassets in Resources */,
+				5A02B27C18CCDD7100D27064 /* quotes.sqlite in Resources */,
 				5ACE988B18CA110D00F9CE83 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
